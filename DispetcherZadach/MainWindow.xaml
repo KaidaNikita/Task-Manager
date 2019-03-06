@@ -1,0 +1,43 @@
+﻿<Window x:Class="DispetcherZadach.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DispetcherZadach"
+        mc:Ignorable="d"           
+        Title="MainWindow" Height="419.5" Width="455">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="368*"/>
+            <RowDefinition Height="54*"/>
+            <RowDefinition Height="31*"/>
+        </Grid.RowDefinitions>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="New task"></MenuItem>
+                <MenuItem Header="Exit task manager"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="Task manager help"></MenuItem>
+                <MenuItem Header="About"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <TabControl Grid.Row="1" >
+            <TabItem Header="Hello">
+                <ListView>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="auto">Task</GridViewColumn>
+                            <GridViewColumn Width="auto">Status</GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                    <ListViewItem>
+                        ukt7utu
+                    </ListViewItem>
+                </ListView>
+            </TabItem>
+            <TabItem Header="Hello">Hello2</TabItem>
+        </TabControl>
+    </Grid>
+</Window>
