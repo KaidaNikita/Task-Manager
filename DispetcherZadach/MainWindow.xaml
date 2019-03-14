@@ -4,40 +4,66 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DispetcherZadach"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"           
-        Title="MainWindow" Height="419.5" Width="455">
+        Title="Диспетчер задач" Height="419.5" Width="455">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="42*"/>
+            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition Width="137*"/>
+            <ColumnDefinition Width="95*"/>
+            <ColumnDefinition Width="69*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="368*"/>
-            <RowDefinition Height="54*"/>
-            <RowDefinition Height="31*"/>
+            <RowDefinition Height="306*"/>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="36*"/>
         </Grid.RowDefinitions>
-        <Menu Height="25" VerticalAlignment="Top">
+        <Menu Height="25" VerticalAlignment="Top" Grid.ColumnSpan="5">
             <MenuItem Header="File">
-                <MenuItem Header="New task"></MenuItem>
-                <MenuItem Header="Exit task manager"></MenuItem>
-            </MenuItem>
+				<MenuItem Click="Button_Click_2" Header="New task"></MenuItem>
+				<MenuItem Header="Exit task manager" Click="MenuItem_Click"></MenuItem>
+			</MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="Task manager help"></MenuItem>
                 <MenuItem Header="About"></MenuItem>
             </MenuItem>
+            <MenuItem Header="Settings">
+                <StackPanel>
+                    <CheckBox IsChecked="True" Name="prior_ch">
+                        Priority
+                    </CheckBox>
+					<CheckBox IsChecked="True" Name="name_ch">
+                        Name
+                    </CheckBox>
+					<CheckBox IsChecked="True" Name="id_ch">
+                        Id
+                    </CheckBox>
+                </StackPanel>
+            </MenuItem>
         </Menu>
-        <TabControl Grid.Row="1" >
-            <TabItem Header="Hello">
-                <ListView>
+        <TabControl Grid.Row="1" Grid.ColumnSpan="5" >
+            <TabItem Header="Processes">
+                <ListView Name="procs" ItemsSource="{DynamicResource ResourceKey=proceses}" >
                     <ListView.View>
-                        <GridView>
-                            <GridViewColumn Width="auto">Task</GridViewColumn>
-                            <GridViewColumn Width="auto">Status</GridViewColumn>
+                        <GridView >
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Name}"  >Name</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Width="100">Id</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Priority}">Priority</GridViewColumn>
                         </GridView>
                     </ListView.View>
-                    <ListViewItem>
-                        ukt7utu
-                    </ListViewItem>
+                    <ListView.Resources>
+						<col:ArrayList x:Key="proceses">
+						</col:ArrayList>
+                    </ListView.Resources>
                 </ListView>
             </TabItem>
             <TabItem Header="Hello">Hello2</TabItem>
         </TabControl>
+        <Button Grid.Column="3" Grid.Row="2" Height="23" VerticalAlignment="Top" Click="Button_Click_1">End task</Button>
+        <Button Grid.Column="1" Grid.Row="2" Click="Button_Click_2">New task</Button>
+        <Button Grid.Column="2" Grid.Row="2" Click="Button_Click">Update</Button>
     </Grid>
 </Window>
