@@ -23,7 +23,8 @@
         </Grid.RowDefinitions>
         <Menu Height="25" VerticalAlignment="Top" Grid.ColumnSpan="5">
             <MenuItem Header="File">
-				<MenuItem Click="Button_Click_2" Header="New task"></MenuItem>
+                <MenuItem Header="Connect plugin" Click="MenuItem_Click_1"></MenuItem>
+                <MenuItem Click="Button_Click_2" Header="New task"></MenuItem>
 				<MenuItem Header="Exit task manager" Click="MenuItem_Click"></MenuItem>
 			</MenuItem>
             <MenuItem Header="Help">

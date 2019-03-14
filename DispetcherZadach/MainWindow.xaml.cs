@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Diagnostics;
 using System.Collections;
 using System.Collections.ObjectModel;
+using System.Reflection;
 
 namespace DispetcherZadach
 {
@@ -83,6 +84,24 @@ namespace DispetcherZadach
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        static public void infDomain(AppDomain ap)
+        {
+           MessageBox.Show($"Компоновочні блоки (зборки) домена {ap.FriendlyName} ");
+            foreach (var item in ap.GetAssemblies())
+            {
+                MessageBox.Show($"{item.GetName().Name}, {item.GetName().Version}");
+            }
+
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            AppDomain Plagin = AppDomain.CreateDomain("Plagin");
+            //Загрузка нового блоку, в домен , створеної бібліотеки
+            Assembly asm = Plagin.Load("MyPlugin");
+            infDomain(Plagin);
         }
     }
 }
